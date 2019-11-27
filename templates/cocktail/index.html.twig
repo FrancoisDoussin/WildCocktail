@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12 mt-4">
+            <h1>{{ category.name }}</h1>
+        </div>
+    </div>
+    <div class="row">
+    {% for cocktail in category.cocktails %}
+        <div class="col-4">
+            <div class="card">
+                <img src="{{ cocktail.image }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ cocktail.name }}</h5>
+                    {% include "Bricks/rate.html.twig" with {"rates" : cocktail.rates} %}
+                    <p class="card-text">{{ cocktail.description }}</p>
+                    <a href="#" class="btn btn-primary">detail</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

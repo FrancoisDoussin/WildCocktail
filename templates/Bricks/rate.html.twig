@@ -1,0 +1,22 @@
+{% set average = 0 %}
+{% set sumratings = 0 %}
+{% for rate in rates %}
+    {% set sumratings = sumratings + rate.rate %}
+{% endfor %}
+{% if rates|length != 0 %}
+    {% set average = sumratings / rates|length %}
+{% endif %}
+
+{% if average >= 5 %}
+    <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+{% elseif average >= 4 %}
+    <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></p>
+{% elseif average >= 3 %}
+    <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></p>
+{% elseif average >= 2 %}
+    <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></p>
+{% elseif average >= 1 %}
+    <p><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></p>
+{% else %}
+    <p><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></p>
+{% endif %}
