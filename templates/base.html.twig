@@ -7,10 +7,9 @@
         {{ encore_entry_link_tags('app') }}
     </head>
     <body>
-        {% include 'Bricks/navbar.html.twig' %}
-        <div class="container">
-            {% block body %}{% endblock %}
-        </div>
+        {% include 'Bricks/_navbar.html.twig' %}
+        {% block body %}{% endblock %}
+        {% include 'Bricks/_footer.html.twig' %}
         {% block javascripts %}{% endblock %}
         {{ encore_entry_script_tags('app') }}
     </body>

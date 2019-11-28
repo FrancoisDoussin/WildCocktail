@@ -3,27 +3,31 @@
 {% block title %}{{ category.name }}{% endblock %}
 
 {% block body %}
-    <div class="row mt-4">
-        <div class="col-12 text-center">
-            <h1>Catégorie {{ category.name }}</h1>
-            <img src="{{ category.image }}" alt="{{ category.name }}" width="300px">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center text-white bg-dark pt-2 pb-2">
+                <h1 >Catégorie {{ category.name }}</h1>
+                <img class="rounded-circle" src="{{ category.image }}" alt="{{ category.name }}" width="300px">
+            </div>
         </div>
     </div>
-    <div class="row mt-4">
-        <div class="col-12 text-center">
-            <h1>Les Cocktails</h1>
-        </div>
-        {% for cocktail in category.cocktails %}
-            <div class="col-4">
-                <div class="card">
-                    <img class="card-img-top" src="{{ cocktail.image }}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ cocktail.name }}</h5>
-                        <p class="card-text">{{ cocktail.description }}</p>
-                        <a href="#" class="btn btn-primary">Detail</a>
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+                <h1>Les Cocktails</h1>
+            </div>
+            {% for cocktail in category.cocktails %}
+                <div class="col-xs-12 co-md-6 col-xl-4">
+                    <div class="card mt-2">
+                        <img class="card-img-top" src="{{ cocktail.image }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ cocktail.name }}</h5>
+                            <p class="card-text">{{ cocktail.description }}</p>
+                            <a href="#" class="btn btn-primary">Detail</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
