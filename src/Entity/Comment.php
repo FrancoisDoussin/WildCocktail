@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
@@ -18,11 +20,13 @@ class Comment
 
     /**
      * @ORM\Column(type="string", length=150)
+     * @Assert\NotBlank(message="please enter your name")
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="please add your comment")
      */
     private $comment;
 
@@ -36,6 +40,11 @@ class Comment
      * @ORM\JoinColumn(nullable=false)
      */
     private $cocktail;
+
+    public function __construct()
+    {
+        $this->createdAt = new DateTime();
+    }
 
     public function getId(): ?int
     {

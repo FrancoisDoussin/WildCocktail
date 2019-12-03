@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wild Cocktail : {{ cocktail.name }}{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center text-white bg-dark pt-2 pb-2">
+                <h1>Cocktail {{ cocktail.name }}</h1>
+                <img class="rounded-circle" src="{{ cocktail.image }}" alt="{{ cocktail.name }}" width="300px">
+                <p>{{ cocktail.description }}</p>
+            </div>
+            <div class="col-12 text-center text-white bg-dark pt-2 pb-2">
+                <h2>Ingredients</h2>
+                <p>{{ cocktail.ingredients }}</p>
+            </div>
+            <div class="col-12 text-center text-white bg-dark pt-2 pb-2">
+                <h2>Recette</h2>
+                <p>{{ cocktail.receipe }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row mt-4">
+            <h2>Commentaires</h2>
+            <div class="col-12">
+                {{ form(commentForm) }}
+            </div>
+            <div class="list-group col-12">
+                {% for comment in cocktail.comments %}
+                        <div class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">{{ comment.name }}</h5>
+                                <small>{{ comment.createdAt|date("d/m/Y H:i:s") }}</small>
+                            </div>
+                            <p class="mb-1">{{ comment.comment }}</p>
+                        </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

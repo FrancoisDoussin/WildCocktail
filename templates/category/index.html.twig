@@ -23,7 +23,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ cocktail.name }}</h5>
                             <p class="card-text">{{ cocktail.description }}</p>
-                            <a href="#" class="btn btn-primary">Detail</a>
+                            <a href="{{ path('cocktail_detail', { 'id' : cocktail.id }) }}" class="btn btn-primary">Detail</a>
                         </div>
                     </div>
                 </div>
