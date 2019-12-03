@@ -7,7 +7,7 @@
         {{ encore_entry_link_tags('app') }}
     </head>
     <body>
-        {% include 'Bricks/_navbar.html.twig' %}
+        {{ render(controller('App\\Controller\\CategoryController::renderNavBar')) }}
         {% block body %}{% endblock %}
         {% include 'Bricks/_footer.html.twig' %}
         {% block javascripts %}{% endblock %}
