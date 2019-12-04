@@ -29,4 +29,11 @@ class CategoryController extends AbstractController
             'categories' => $categoryRepository->findAll(),
         ]);
     }
+
+    public function renderFooter(CategoryRepository $categoryRepository): Response
+    {
+        return $this->render('Bricks/_footer.html.twig', [
+            'categories' => $categoryRepository->findAll(),
+        ]);
+    }
 }
