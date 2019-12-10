@@ -22,18 +22,4 @@ class CategoryController extends AbstractController
             'category' => $category,
         ]);
     }
-
-    public function renderNavBar(CategoryRepository $categoryRepository): Response
-    {
-        return $this->render('Bricks/_navbar.html.twig', [
-            'categories' => $categoryRepository->findAll(),
-        ]);
-    }
-
-    public function renderFooter(CategoryRepository $categoryRepository): Response
-    {
-        return $this->render('Bricks/_footer.html.twig', [
-            'categories' => $categoryRepository->findAll(),
-        ]);
-    }
 }
