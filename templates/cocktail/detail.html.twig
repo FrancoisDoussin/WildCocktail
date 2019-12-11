@@ -8,15 +8,15 @@
             <div class="col-12 text-center text-white bg-dark pt-2 pb-2">
                 <h1>Cocktail {{ cocktail.name }}</h1>
                 <img class="rounded-circle" src="{{ cocktail.image }}" alt="{{ cocktail.name }}" width="300px">
-                <p>{{ cocktail.description }}</p>
+                <p>{{ cocktail.description|raw }}</p>
             </div>
             <div class="col-12 text-center text-white bg-dark pt-2 pb-2">
                 <h2>Ingredients</h2>
-                <p>{{ cocktail.ingredients }}</p>
+                <p>{{ cocktail.ingredients|raw }}</p>
             </div>
             <div class="col-12 text-center text-white bg-dark pt-2 pb-2">
                 <h2>Recette</h2>
-                <p>{{ cocktail.receipe }}</p>
+                <p>{{ cocktail.receipe|raw }}</p>
             </div>
         </div>
     </div>
