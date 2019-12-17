@@ -25,9 +25,9 @@ class CocktailFixtures extends Fixture implements DependentFixtureInterface
                 ->setName($faker->word)
                 ->setImage($faker->imageUrl(500, 500, "food"))
                 ->setCreatedAt($faker->dateTime())
-                ->setDescription($faker->paragraph)
-                ->setIngredients($faker->paragraph)
-                ->setReceipe($faker->paragraph)
+                ->setDescription($faker->text(2000))
+                ->setIngredients($faker->text(2000))
+                ->setReceipe($faker->text(5000))
                 ->setCategory($category)
             ;
             $this->addReference("cocktail_".$i, $cocktail);
