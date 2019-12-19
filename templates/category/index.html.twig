@@ -22,7 +22,7 @@
                         <img class="card-img-top" src="{{ cocktail.image }}" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">{{ cocktail.name }}</h5>
-                            <p class="card-text">{{ cocktail.description }}</p>
+                            <p class="card-text">{{ cocktail.description|slice(0, 200) }}...</p>
                             <a href="{{ path('cocktail_detail', { 'id' : cocktail.id }) }}" class="btn btn-primary">Detail</a>
                         </div>
                     </div>
