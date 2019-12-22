@@ -8,12 +8,12 @@ Feature:
   Scenario: Go to category detail
     When I am on homepage
     Then I wait 2 seconds
-    And I should see "non"
-    When I follow "non"
+    And I should see "Rhum"
+    When I follow "Rhum"
     Then I wait 2 seconds
-    And I should see "Catégorie non"
+    And I should see "Catégorie Rhum"
     And I wait 2 seconds
-    And I should see "est"
+    And I should see "Rhum Cockail 0"
 
   Scenario: Create Cocktail
     When I am on "/cocktail/new"
@@ -22,7 +22,7 @@ Feature:
     And I fill in "Name" with "Super Cocktail Plus"
     And I scrollTo "100" px
     And I wait 1 seconds
-    And I select "non" from "Category"
+    And I select "Rhum" from "Category"
     And I scrollTo "300" px
     And I wait 1 seconds
     And I fill in "Image" with "https://static.cuisineaz.com/610x610/i113467-cocktail-de-noel-a-la-grenade-et-au-citron-vert.jpg"

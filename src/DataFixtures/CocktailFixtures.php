@@ -17,6 +17,23 @@ class CocktailFixtures extends Fixture implements DependentFixtureInterface
     {
         $faker = Factory::create();
 
+        for ($i=0; $i<=2; $i++) {
+            $rhumCocktail = new Cocktail();
+            /** @var Category $category */
+            $category = $this->getReference("rhum");
+            $rhumCocktail
+                ->setName("Rhum Cockail ".$i)
+                ->setImage($faker->imageUrl(500, 500, "food"))
+                ->setCreatedAt($faker->dateTime())
+                ->setDescription($faker->text(2000))
+                ->setIngredients($faker->text(2000))
+                ->setReceipe($faker->text(5000))
+                ->setCategory($category)
+            ;
+            $this->addReference("rhumcocktail_".$i, $rhumCocktail);
+            $manager->persist($rhumCocktail);
+        }
+
         for ($i=0; $i<=self::COCKTAIL_NUMBER; $i++) {
             $cocktail = new Cocktail();
             /** @var Category $category */
