@@ -7,11 +7,13 @@
         {% block stylesheets %}{% endblock %}
         {{ encore_entry_link_tags('app') }}
     </head>
-    <body class="d-flex flex-column">
-        {{ render(controller('App\\Controller\\DefaultController::renderNavBar')) }}
-        {% block body %}{% endblock %}
-        {{ render(controller('App\\Controller\\DefaultController::renderFooter')) }}
-        {% block javascripts %}{% endblock %}
-        {{ encore_entry_script_tags('app') }}
+    <body>
+        <div class="d-flex flex-column">
+            {{ render(controller('App\\Controller\\DefaultController::renderNavBar')) }}
+            {% block body %}{% endblock %}
+            {{ render(controller('App\\Controller\\DefaultController::renderFooter')) }}
+            {% block javascripts %}{% endblock %}
+            {{ encore_entry_script_tags('app') }}
+        </div>
     </body>
 </html>
