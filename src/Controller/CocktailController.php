@@ -67,6 +67,7 @@ class CocktailController extends AbstractController
             $comment->setCocktail($cocktail);
             $entityManager->persist($comment);
             $entityManager->flush();
+            $this->addFlash('success', 'Merci pour votre commentaire !');
 
             return $this->redirectToRoute('cocktail_detail', [
                 'id' => $cocktail->getId(),

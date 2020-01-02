@@ -8,6 +8,16 @@
         {{ encore_entry_link_tags('app') }}
     </head>
     <body>
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endfor %}
         <div class="d-flex flex-column">
             {{ render(controller('App\\Controller\\DefaultController::renderNavBar')) }}
             {% block body %}{% endblock %}
