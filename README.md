@@ -5,10 +5,12 @@ Copy `.env` into `.env.local` file and add your local informations.
 ```
 composer install
 yarn install
-yarn encore dev
 bin/console d:d:c
 bin/console d:m:m -n
 bin/console d:f:l -n
+bin/console assets:install --symlink public
+bin/console fos:js-routing:dump --format=json --target=public/js/fos_js_routes.json
+yarn encore dev
 ```
 
 Launch PHP server 

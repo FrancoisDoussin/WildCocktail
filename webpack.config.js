@@ -80,8 +80,8 @@ Encore
     //.autoProvidejQuery()
 
     // uncomment if you use API Platform Admin (composer req api-admin)
-    //.enableReactPreset()
-    //.addEntry('admin', './assets/js/admin.js')
+    .enableReactPreset()
+    .addEntry('categories-react', './assets/js/Categories-React/app.js')
 ;
 
 module.exports = Encore.getWebpackConfig();

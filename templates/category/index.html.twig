@@ -16,18 +16,11 @@
             <div class="col-12 text-center">
                 <h1>Les Cocktails</h1>
             </div>
-            {% for cocktail in category.cocktails %}
-                <div class="col-xs-12 co-md-6 col-xl-4">
-                    <div class="card mt-2">
-                        <img class="card-img-top" src="{{ cocktail.image }}" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ cocktail.name }}</h5>
-                            <p class="card-text">{{ cocktail.description|slice(0, 200) }}...</p>
-                            <a href="{{ path('cocktail_detail', { 'id' : cocktail.id }) }}" class="btn btn-primary">Detail</a>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
+            <div class="col-12" id="root" category="{{ category.id }}"></div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('categories-react') }}
 {% endblock %}
