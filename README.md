@@ -6,6 +6,9 @@ Copy `.env` into `.env.local` file and add your local informations.
 composer install
 yarn install
 yarn encore dev
+bin/console d:d:c
+bin/console d:m:m -n
+bin/console d:f:l -n
 ```
 
 Launch PHP server 
