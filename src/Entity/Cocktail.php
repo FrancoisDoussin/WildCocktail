@@ -6,6 +6,7 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CocktailRepository")
@@ -16,16 +17,19 @@ class Cocktail
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("categories-react")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Groups("categories-react")
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("categories-react")
      */
     private $description;
 
@@ -41,6 +45,7 @@ class Cocktail
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("categories-react")
      */
     private $image;
 

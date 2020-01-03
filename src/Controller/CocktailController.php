@@ -2,13 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Cocktail;
 use App\Entity\Comment;
 use App\Form\CocktailType;
 use App\Form\CommentType;
+use App\Repository\CocktailRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -45,7 +48,7 @@ class CocktailController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="detail")
+     * @Route("/{id}", options = { "expose" = true }, name="detail")
      */
     public function index(
         Cocktail $cocktail,
@@ -78,5 +81,18 @@ class CocktailController extends AbstractController
             'cocktail' => $cocktail,
             'commentForm' => $commentForm->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/api/{id}/{order}", options = { "expose" = true }, name="show_api")
+     */
+    public function showByCategory(Category $category, CocktailRepository $cocktailRepository, string $order = "ASC" ): JsonResponse
+    {
+        return $this->json(
+            $cocktailRepository->findBy(['category' => $category], ['name' => $order]),
+            200,
+            [],
+            [ "groups" => "categories-react" ]
+        );
     }
 }
