@@ -1,3 +1,19 @@
+## Install
+
+Copy `.env` into `.env.local` file and add your local informations.
+
+```
+composer install
+yarn install
+yarn encore dev
+```
+
+Launch PHP server 
+
+```
+symfony server:start
+```
+
 ## Tests
 
 ### PHPUnit
