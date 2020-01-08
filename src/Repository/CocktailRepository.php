@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Category;
 use App\Entity\Cocktail;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
@@ -19,32 +20,21 @@ class CocktailRepository extends ServiceEntityRepository
         parent::__construct($registry, Cocktail::class);
     }
 
-    // /**
-    //  * @return Cocktail[] Returns an array of Cocktail objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findByCategoryOrderByAndSearch(Category $category, string $order, ?string $search): array
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        $query = $this->createQueryBuilder('c')
+            ->where('c.category = :category')
+            ->orderBy('c.name', $order)
+            ->setParameter('category', $category)
         ;
-    }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Cocktail
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        if ($search) {
+            $query
+                ->andWhere('c.name LIKE :search')
+                ->setParameter('search', '%'.$search.'%')
+            ;
+        }
+
+        return $query->getQuery()->getResult();
     }
-    */
 }

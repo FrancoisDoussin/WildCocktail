@@ -84,12 +84,12 @@ class CocktailController extends AbstractController
     }
 
     /**
-     * @Route("/api/{id}/{order}", options = { "expose" = true }, name="show_api")
+     * @Route("/api/{id}/{order}/{search}", options = { "expose" = true }, name="show_api")
      */
-    public function showByCategory(Category $category, CocktailRepository $cocktailRepository, string $order = "ASC" ): JsonResponse
+    public function showByCategory(Category $category, CocktailRepository $cocktailRepository, string $order = "ASC", string $search = null): JsonResponse
     {
         return $this->json(
-            $cocktailRepository->findBy(['category' => $category], ['name' => $order]),
+            $cocktailRepository->findByCategoryOrderByAndSearch($category, $order, $search),
             200,
             [],
             [ "groups" => "categories-react" ]

@@ -11,9 +11,10 @@ Routing.setRoutingData(routes);
 function App() {
   const [cocktails, setCocktails] = useState([]);
   const [order, setOrder] = useState("ASC");
+  const [search, setSearch] = useState(null);
 
   function fetchCocktail() {
-    fetch(Routing.generate('cocktail_show_api', { id: category, order: order }))
+    fetch(Routing.generate('cocktail_show_api', { id: category, order: order, search: search }))
       .then((response)=>{
         return response.json();
       })
@@ -28,7 +29,7 @@ function App() {
 
   useEffect(() => {
     fetchCocktail();
-  }, [order]);
+  }, [order, search]);
 
   return (
     <div className="row">
@@ -39,6 +40,10 @@ function App() {
             <option value="ASC">asc</option>
             <option value="DESC">desc</option>
           </select>
+        </div>
+        <div className="row">
+          <p className="col-2 m-0 align-middle text-center font-weight-bold">Search</p>
+          <input className="col-10 form-control" type="text" onChange={(event) => setSearch(event.target.value)}/>
         </div>
       </div>
       <div className="row">
