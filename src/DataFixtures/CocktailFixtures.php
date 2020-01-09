@@ -11,7 +11,7 @@ use Faker\Factory;
 
 class CocktailFixtures extends Fixture implements DependentFixtureInterface
 {
-    const COCKTAIL_NUMBER = 100;
+    const COCKTAIL_NUMBER = 500;
 
     public function load(ObjectManager $manager)
     {
