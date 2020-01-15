@@ -25,6 +25,7 @@ Encore
      */
     .addEntry('app', './assets/js/app.js')
     .addEntry('cocktail-detail', './assets/js/cocktail-detail.js')
+    .addEntry('cocktail-selector', './assets/js/cocktail-selector.js')
     //.addEntry('page2', './assets/js/page2.js')
 
     .copyFiles({

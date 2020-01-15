@@ -6,6 +6,7 @@ use App\Entity\Cocktail;
 use App\Entity\Comment;
 use App\Form\CocktailType;
 use App\Form\CommentType;
+use App\Repository\CocktailRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -41,6 +42,16 @@ class CocktailController extends AbstractController
 
         return $this->render("cocktail/new.html.twig", [
             "form" => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/selector", name="selector")
+     */
+    public function selector(CocktailRepository $cocktailRepository): Response
+    {
+        return $this->render('cocktail/selector.html.twig', [
+            'cocktails' => $cocktailRepository->getAllIdAndName(),
         ]);
     }
 

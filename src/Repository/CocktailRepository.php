@@ -19,32 +19,13 @@ class CocktailRepository extends ServiceEntityRepository
         parent::__construct($registry, Cocktail::class);
     }
 
-    // /**
-    //  * @return Cocktail[] Returns an array of Cocktail objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function getAllIdAndName(): array
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
+        return $this
+            ->createQueryBuilder('c')
+            ->select('c.id', 'c.name')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Cocktail
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
