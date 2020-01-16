@@ -46,22 +46,28 @@ function App() {
           <input className="col-10 form-control" type="text" onChange={(event) => setSearch(event.target.value)}/>
         </div>
       </div>
-      <div className="row">
-          { cocktails.map((cocktail) => {
-            return (
-              <div className="col-xs-12 co-md-6 col-xl-4" key={cocktail.id}>
-                <div className="card mt-2">
-                  <img className="card-img-top" src={ cocktail.image } alt="Card image cap"/>
-                  <div className="card-body">
-                    <h5 className="card-title">{ cocktail.name }</h5>
-                    <p className="card-text">{ cocktail.description.substring(0, 100) }...</p>
-                    <a href={Routing.generate('cocktail_detail', { id: cocktail.id })} className="btn btn-primary">Detail</a>
+        { cocktails.length ?
+          <div className="row">
+            { cocktails.map((cocktail) => {
+              return (
+                <div className="col-xs-12 co-md-6 col-xl-4" key={cocktail.id}>
+                  <div className="card mt-2">
+                    <img className="card-img-top" src={ cocktail.image } alt="Card image cap"/>
+                    <div className="card-body">
+                      <h5 className="card-title">{ cocktail.name }</h5>
+                      <p className="card-text">{ cocktail.description.substring(0, 100) }...</p>
+                      <a href={Routing.generate('cocktail_detail', { id: cocktail.id })} className="btn btn-primary">Detail</a>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )
-          })}
-      </div>
+              )
+            })}
+          </div>
+        :
+          <div className="col-12 text-center mt-4">
+            <h2>No result</h2>
+          </div>
+        }
     </div>
   );
 }
