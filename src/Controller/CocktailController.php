@@ -84,6 +84,23 @@ class CocktailController extends AbstractController
     }
 
     /**
+     * @Route("/api/number/{number}", options = { "expose" = true }, name="numberCocktail")
+     */
+    public function getNumberOfCoktail(int $number, CocktailRepository $cocktailRepository): Response
+    {
+        $cocktails = $cocktailRepository->findAll();
+        shuffle($cocktails);
+        $cocktails = array_slice($cocktails, 0, $number);
+
+        return $this->json(
+            $cocktails,
+            200,
+            [],
+            [ "groups" => "categories-react" ]
+        );
+    }
+
+    /**
      * @Route("/api/{id}/{order}/{search}", options = { "expose" = true }, name="show_api")
      */
     public function showByCategory(Category $category, CocktailRepository $cocktailRepository, string $order = "ASC", string $search = null): JsonResponse

@@ -17,6 +17,14 @@ class DefaultController extends AbstractController
         return $this->render("index.html.twig");
     }
 
+    /**
+     * @Route("/party", name="party")
+     */
+    public function party()
+    {
+        return $this->render("party.html.twig");
+    }
+
     public function renderNavBar(CategoryRepository $categoryRepository): Response
     {
         return $this->render('Bricks/_navbar.html.twig', [
