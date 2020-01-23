@@ -37,3 +37,17 @@ Run selenium and execute behat tests
 java -Dwebdriver.chrome.driver="chromedriver" -jar selenium-server-standalone-3.141.59.jar
 bin/behat
 ```
+
+## Docker
+
+Launch Docker environment with :
+
+```
+docker-composer up
+```
+
+Enter in container with and execute your commands
+
+```
+docker exec -it php-fpm sh
+```
